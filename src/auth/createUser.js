@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import prisma from './prisma/index.js';
+import prisma from '../prisma/index.js';
 
 const SALT_ROUNDS = 10;
 
@@ -13,18 +13,20 @@ export async function createUser(req, reply) {
       },
     });
     if (existingUser) {
-      throw Error('User already exists with this email');
+      return Error('User already exists with this email');
     }
 
+    const createHash = async (pwd) => await bcrypt.hash(pwd, SALT_ROUNDS);
+
     const newUser = {
-      password: bcrypt.hashSync(password, SALT_ROUNDS),
-      email: email,
-      name: name,
+      name,
+      email,
+      password: await createHash(password),
     };
 
     const user = await prisma.user.create({ data: newUser });
-    return user
+    return user;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 }

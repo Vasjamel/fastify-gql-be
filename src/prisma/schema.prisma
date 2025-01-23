@@ -21,28 +21,48 @@ model User {
   password    String
 }
 
-
 model Pupil {
   id          String    @id @default(cuid())
   createdAt   DateTime  @default(now())
-  birthday    DateTime
+  birthday    DateTime  @default(now())
   name        String?
   grade       Int
   lessons     Lesson[]
+  tasks       Task[]
 }
 
 model Lesson {
   id          String      @id @default(cuid())
   createdAt   DateTime    @default(now())
   subject     String
-  teacher     Teacher?    @relation(fields: [teacherId], references: id)
+  teacher     Teacher?    @relation(fields: [teacherId], references: [id])
   teacherId   String
   pupils      Pupil[]
+  tasks       Task[]
+//  classId     String?
+//  class       Class?      @relation(fields: [classId], references: [id])
 }
 
 model Teacher {
   id          String     @id @default(cuid())
-  createdAt   DateTime    @default(now())
+  createdAt   DateTime   @default(now())
   name        String
   lessons     Lesson[]
+}
+
+// model Class {
+//  id          String     @id @default(cuid())
+//  createdAt   DateTime   @default(now())
+//  name        String
+//  lessons     Lesson[]
+// }
+
+model Task {
+  id          String     @id @default(cuid())
+  createdAt   DateTime   @default(now())
+  description String
+  lesson      Lesson     @relation(fields: [lessonId], references: [id])
+  lessonId    String
+  pupil       Pupil      @relation(fields: [pupilId], references: [id])
+  pupilId     String
 }
