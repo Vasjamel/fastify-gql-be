@@ -1,25 +1,17 @@
-import { createLesson } from './createLesson.js';
-import { deleteLesson } from './deleteLesson.js';
-import { createPupil } from './createPupil.js';
-import { deletePupil } from './deletePupil.js';
-import { createTeacher } from './createTeacher.js';
-import { deleteTeacher } from './deleteTeacher.js';
-// import { updateTeacher } from './updateTeacher.js';
-// import { updateLesson } from './updateLesson.js';
-// import { updatePupil } from './updatePupil.js';
+import lessons from './lessons/index.js';
+import pupils from './pupils/index.js';
+import teachers from './teachers/index.js';
+
+const { createLesson, deleteLesson, updateLesson, getLessons } = lessons;
+const { createPupil, deletePupil, updatePupil, getPupils } = pupils;
+const { createTeacher, deleteTeacher, updateTeacher, getTeachers } = teachers;
 
 
 const resolvers = {
   Query: {
-    pupils: async (_parent, _args, ctx) => {
-      return ctx.prisma.pupil.findMany()
-    },
-    lessons: async (_parent, _args, ctx) => {
-      return ctx.prisma.lesson.findMany()
-    },
-    teachers: async (_parent, _args, ctx) => {
-      return ctx.prisma.teacher.findMany()
-    },
+    pupils: getPupils,
+    lessons: getLessons,
+    teachers: getTeachers
   },
   Mutation: {
     createTeacher,
@@ -31,7 +23,8 @@ const resolvers = {
     // updateLesson,
     // updateTeacher,
     // updatePupil
-  }
-}
 
-export default resolvers
+  },
+};
+
+export default resolvers;

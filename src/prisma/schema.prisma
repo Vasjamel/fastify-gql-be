@@ -14,55 +14,66 @@ datasource db {
 }
 
 model User {
-  id          String    @id @default(cuid())
-  createdAt   DateTime  @default(now())
-  email       String    @unique
-  name        String?
-  password    String
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  name      String?
+  password  String
 }
 
 model Pupil {
-  id          String    @id @default(cuid())
-  createdAt   DateTime  @default(now())
-  birthday    DateTime  @default(now())
-  name        String?
-  grade       Int
-  lessons     Lesson[]
-  tasks       Task[]
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  birthday            DateTime              @default(now())
+  name                String?
+  grade               Int?
+  group               String?
+  lessons             Lesson[]              @relation("PupilLessons")
+  Task                Task[]
+ // LessonPupilRelation LessonPupilRelation[]
 }
 
 model Lesson {
-  id          String      @id @default(cuid())
-  createdAt   DateTime    @default(now())
-  subject     String
-  teacher     Teacher?    @relation(fields: [teacherId], references: [id])
-  teacherId   String
-  pupils      Pupil[]
-  tasks       Task[]
-//  classId     String?
-//  class       Class?      @relation(fields: [classId], references: [id])
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  subject             String
+  teacher             Teacher?              @relation(fields: [teacherId], references: [id])
+  teacherId           String
+  pupils              Pupil[]               @relation("PupilLessons")
+  Task                Task[]
+ // LessonPupilRelation LessonPupilRelation[]
 }
 
 model Teacher {
-  id          String     @id @default(cuid())
-  createdAt   DateTime   @default(now())
-  name        String
-  lessons     Lesson[]
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  lessons   Lesson[]
 }
-
-// model Class {
-//  id          String     @id @default(cuid())
-//  createdAt   DateTime   @default(now())
-//  name        String
-//  lessons     Lesson[]
-// }
 
 model Task {
-  id          String     @id @default(cuid())
-  createdAt   DateTime   @default(now())
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   description String
-  lesson      Lesson     @relation(fields: [lessonId], references: [id])
+  lesson      Lesson   @relation(fields: [lessonId], references: [id])
   lessonId    String
-  pupil       Pupil      @relation(fields: [pupilId], references: [id])
+  pupil       Pupil    @relation(fields: [pupilId], references: [id])
   pupilId     String
 }
+
+// model LessonPupilRelation {
+//  createdAt  DateTime @default(now())
+//  updatedAt  DateTime @updatedAt
+//  lesson     Lesson   @relation(fields: [lessonId], references: [id])
+//  lessonId   String
+//  pupil      Pupil    @relation(fields: [pupilId], references: [id])
+//  pupilId    String
+//  assignedBy String
+//
+//  @@id([pupilId, lessonId])
+// }

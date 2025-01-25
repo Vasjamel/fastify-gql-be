@@ -1,3 +1,5 @@
+import { LESSONS_INCLUDE } from '../utils/includes.js';
+
 export async function updateLesson(_parent, { id, subject, teacherId }, ctx) {
   try {
     const existingLesson = await ctx.prisma.lesson.findUnique({
@@ -17,6 +19,7 @@ export async function updateLesson(_parent, { id, subject, teacherId }, ctx) {
         subject,
         teacherId,
       },
+      includes: LESSONS_INCLUDE
     });
 
     return updatedLesson;

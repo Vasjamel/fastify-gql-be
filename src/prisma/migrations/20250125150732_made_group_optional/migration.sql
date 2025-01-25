@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Pupil" ALTER COLUMN "grade" DROP NOT NULL,
+ALTER COLUMN "group" DROP NOT NULL;

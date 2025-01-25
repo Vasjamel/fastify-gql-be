@@ -5,13 +5,10 @@ import { createUser } from './auth/createUser.js';
 
 import 'dotenv/config'
 
-
 import schema from './schema/index.js';
 import resolvers from './resolvers/index.js';
 
 const app = Fastify()
-
-// app.register(process)
 
 app.register(mercurius, {
   schema,

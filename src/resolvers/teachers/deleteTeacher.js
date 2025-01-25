@@ -1,3 +1,5 @@
+import { TEACHERS_INCLUDE } from '../utils/includes.js';
+
 export async function deleteTeacher(_parent, { id }, ctx) {
   try {
     const existingTeacher = await ctx.prisma.teacher.findUnique({
@@ -10,6 +12,7 @@ export async function deleteTeacher(_parent, { id }, ctx) {
 
     await ctx.prisma.teacher.delete({
       where: { id },
+      include: TEACHERS_INCLUDE
     });
 
     return existingTeacher;

@@ -1,3 +1,5 @@
+import { TEACHERS_INCLUDE } from '../utils/includes.js';
+
 export async function updateTeacher(_parent, { id, name, email }, ctx) {
   try {
     const existingTeacher = await ctx.prisma.teacher.findUnique({
@@ -17,6 +19,7 @@ export async function updateTeacher(_parent, { id, name, email }, ctx) {
         name,
         email,
       },
+      include: TEACHERS_INCLUDE
     });
 
     return updatedTeacher;

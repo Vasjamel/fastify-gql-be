@@ -1,3 +1,5 @@
+import { PUPILS_INCLUDE } from '../utils/includes.js';
+
 export async function deletePupil(_parent, { id }, ctx) {
   try {
     const existingPupil = await ctx.prisma.pupil.findUnique({
@@ -10,6 +12,7 @@ export async function deletePupil(_parent, { id }, ctx) {
 
     await ctx.prisma.pupil.delete({
       where: { id },
+      include: PUPILS_INCLUDE
     });
 
     return existingPupil;

@@ -1,3 +1,5 @@
+import { LESSONS_INCLUDE } from '../utils/includes.js';
+
 export async function createLesson(_parent, { subject, teacherId }, ctx) {
   try {
     const existingLesson = await ctx.prisma.lesson.findFirst({
@@ -14,7 +16,7 @@ export async function createLesson(_parent, { subject, teacherId }, ctx) {
       teacherId,
     };
 
-    const lesson = await ctx.prisma.lesson.create({ data: newLesson });
+    const lesson = await ctx.prisma.lesson.create({ data: newLesson, include: LESSONS_INCLUDE });
     return lesson;
   } catch (error) {
     return error;

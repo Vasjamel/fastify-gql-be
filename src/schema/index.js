@@ -1,18 +1,15 @@
-const schema = `
-  type Query {
-    lessons: [Lesson],
-    pupils: [Pupil],
-    teachers: [Teacher],
-  }
+import { query } from './queryType.js';
+import { mutation } from './mutationType.js';
+import { inputTypes } from './inputTypes.js';
 
-  type Mutation {
-    createTeacher(name: String): Teacher,
-    createLesson(subject: String!, teacherId: String): Lesson,
-    createPupil(name: String!, grade: Int, birthday: Date): Pupil
-    deletePupil(id: String!): Pupil,
-    deleteTeacher(id: String!): Teacher,
-    deleteLesson(id: String!): Lesson,
-  }
+const schema = `
+  
+  ${query}
+
+  ${mutation}
+
+  ${inputTypes}
+  
 
   type Lesson {
     id: String,
@@ -36,6 +33,6 @@ const schema = `
   }
 
   scalar Date
-`
+`;
 
 export default schema;

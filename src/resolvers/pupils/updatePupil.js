@@ -1,8 +1,10 @@
-export async function updatePupil(_parent, { id, name, age, classId }, ctx) {
+import { PUPILS_INCLUDE } from '../utils/includes.js';
+
+export async function updatePupil(_parent, args, ctx) {
   try {
     const existingPupil = await ctx.prisma.pupil.findUnique({
       where: {
-        id,
+        id: args.id,
       },
     });
     if (!existingPupil) {
@@ -11,13 +13,10 @@ export async function updatePupil(_parent, { id, name, age, classId }, ctx) {
 
     const updatedPupil = await ctx.prisma.pupil.update({
       where: {
-        id,
+        id: args.id,
       },
-      data: {
-        name,
-        age,
-        classId,
-      },
+      data: args,
+      include: PUPILS_INCLUDE
     });
 
     return updatedPupil;
