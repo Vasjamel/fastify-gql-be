@@ -1,21 +1,13 @@
 import { LESSONS_INCLUDE } from '../utils/includes.js';
 
-export async function deleteLesson(_parent, { id }, ctx) {
+export async function deleteLesson(_parent, { find }, ctx) {
   try {
-    const existingLesson = await ctx.prisma.lesson.findUnique({
-      where: { id },
-    });
-
-    if (!existingLesson) {
-      return Error(`Lesson with ID "${id}" does not exist`);
-    }
-
-    await ctx.prisma.lesson.delete({
-      where: { id },
+    const deletedLesson = await ctx.prisma.lesson.delete({
+      where: find,
       include: LESSONS_INCLUDE
     });
 
-    return existingLesson;
+    return deletedLesson;
   } catch (error) {
     return error;
   }

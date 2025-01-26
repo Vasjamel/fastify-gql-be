@@ -7,11 +7,11 @@ export const mutation = `
 
     createPupil(data: PupilInput): Pupil
 
-    deletePupil(id: String!): Pupil,
+    deletePupil(find: PupilFind): Pupil,
 
-    deleteTeacher(id: String!): Teacher,
+    deleteTeacher(find: TeacherFind): Teacher,
 
-    deleteLesson(id: String!): Lesson,
+    deleteLesson(find: LessonFind): Lesson,
 
   }
 `
