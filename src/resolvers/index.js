@@ -20,9 +20,9 @@ const resolvers = {
     deletePupil,
     deleteLesson,
     deleteTeacher,
-    // updateLesson,
-    // updateTeacher,
-    // updatePupil
+    updateLesson,
+    updateTeacher,
+    updatePupil
 
   },
 };

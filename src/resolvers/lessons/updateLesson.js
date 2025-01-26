@@ -1,25 +1,12 @@
 import { LESSONS_INCLUDE } from '../utils/includes.js';
 
-export async function updateLesson(_parent, { id, subject, teacherId }, ctx) {
+export async function updateLesson(_parent, { find, data }, ctx) {
   try {
-    const existingLesson = await ctx.prisma.lesson.findUnique({
-      where: {
-        id,
-      },
-    });
-    if (!existingLesson) {
-      return Error(`Lesson with id "${id}" does not exist`);
-    }
 
     const updatedLesson = await ctx.prisma.lesson.update({
-      where: {
-        id,
-      },
-      data: {
-        subject,
-        teacherId,
-      },
-      includes: LESSONS_INCLUDE
+      where: find,
+      data,
+      include: LESSONS_INCLUDE
     });
 
     return updatedLesson;
