@@ -16,7 +16,8 @@ export async function updatePupil(_parent, args, ctx) {
         id: args.id,
       },
       data: args,
-      include: PUPILS_INCLUDE
+      include: PUPILS_INCLUDE,
+      
     });
 
     return updatedPupil;

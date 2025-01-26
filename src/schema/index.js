@@ -21,8 +21,8 @@ const schema = `
   type Pupil {
     id: String,
     name: String,
-    birthday: Int,
-    grade: Int,
+    birthday: Date,
+    group: String,
     lessons: [Lesson]
   }
 

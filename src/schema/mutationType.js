@@ -1,11 +1,11 @@
 export const mutation = `
   type Mutation {
 
-    createTeacher(name: String): Teacher,
+    createTeacher(data: TeacherInput): Teacher,
 
-    createLesson(subject: String!, teacherId: String): Lesson,
+    createLesson(data: LessonInput): Lesson,
 
-    createPupil(name: String!, grade: Int, birthday: Date, group: String, lessons: [String]): Pupil
+    createPupil(data: PupilInput): Pupil
 
     deletePupil(id: String!): Pupil,
 

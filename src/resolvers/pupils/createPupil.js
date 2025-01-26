@@ -1,27 +1,24 @@
 import { PUPILS_INCLUDE } from '../utils/includes.js';
 
-export async function createPupil(_parent, args, ctx) {
+export async function createPupil(_parent, { data }, ctx) {
   try {
+
+    const { name, birthday } = data;
+
     const existingPupil = await ctx.prisma.pupil.findFirst({
       where: {
-        name: args.name,
-        ...(args.birthday && { birthday: args.birthday }),
+        name: name,
+        ...(birthday && { birthday }),
       },
     });
+
     if (existingPupil) {
-      const born = birthday ? `who born "${args.birthday}"` : '';
-      return Error(`Pupil "${args.name}" ${born} already exists`);
+      const born = birthday ? `who born "${birthday}"` : '';
+      throw Error(`Pupil "${name}" ${born} already exists`);
     }
 
-    const newPupil = {
-      ...args,
-      ...(args.lessons && {
-        lessons: { connect: args.lessons.map((l) => ({ id: l })) },
-      }),
-    };
-
     const pupil = await ctx.prisma.pupil.create({
-      data: newPupil,
+      data,
       include: PUPILS_INCLUDE,
     });
     return pupil;
