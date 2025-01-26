@@ -18,7 +18,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   email     String   @unique
-  name      String?
+  name      String?  @unique
   password  String
 }
 
@@ -27,31 +27,28 @@ model Pupil {
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   birthday            DateTime              @default(now())
-  name                String?
-  grade               Int?
+  name                String                @unique
   group               String?
   lessons             Lesson[]              @relation("PupilLessons")
   Task                Task[]
- // LessonPupilRelation LessonPupilRelation[]
 }
 
 model Lesson {
   id                  String                @id @default(cuid())
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
-  subject             String
+  subject             String                @unique
   teacher             Teacher?              @relation(fields: [teacherId], references: [id])
-  teacherId           String
+  teacherId           String?
   pupils              Pupil[]               @relation("PupilLessons")
   Task                Task[]
- // LessonPupilRelation LessonPupilRelation[]
 }
 
 model Teacher {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  name      String
+  name      String   @unique
   lessons   Lesson[]
 }
 
@@ -59,21 +56,9 @@ model Task {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  description String
-  lesson      Lesson   @relation(fields: [lessonId], references: [id])
-  lessonId    String
-  pupil       Pupil    @relation(fields: [pupilId], references: [id])
-  pupilId     String
+  description String?
+  lesson      Lesson?   @relation(fields: [lessonId], references: [id])
+  lessonId    String?
+  pupil       Pupil?    @relation(fields: [pupilId], references: [id])
+  pupilId     String?
 }
-
-// model LessonPupilRelation {
-//  createdAt  DateTime @default(now())
-//  updatedAt  DateTime @updatedAt
-//  lesson     Lesson   @relation(fields: [lessonId], references: [id])
-//  lessonId   String
-//  pupil      Pupil    @relation(fields: [pupilId], references: [id])
-//  pupilId    String
-//  assignedBy String
-//
-//  @@id([pupilId, lessonId])
-// }
