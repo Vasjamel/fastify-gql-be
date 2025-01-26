@@ -4,7 +4,7 @@ export async function deletePupil(_parent, { find }, ctx) {
   try {
     const deletedPupil = await ctx.prisma.pupil.delete({
       where: find,
-      include: PUPILS_INCLUDE
+      include: PUPILS_INCLUDE,
     });
 
     return deletedPupil;

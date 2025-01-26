@@ -2,7 +2,6 @@ import { PUPILS_INCLUDE } from '../utils/includes.js';
 
 export async function createPupil(_parent, { data }, ctx) {
   try {
-
     const { name, birthday } = data;
 
     const existingPupil = await ctx.prisma.pupil.findFirst({

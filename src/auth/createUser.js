@@ -17,7 +17,6 @@ export async function createUser(req, reply) {
     }
 
     const createHash = async (pwd) => await bcrypt.hash(pwd, SALT_ROUNDS);
-
     const newUser = {
       name,
       email,

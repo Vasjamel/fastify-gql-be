@@ -3,9 +3,9 @@ import { updatePupil } from './updatePupil.js';
 import { deletePupil } from './deletePupil.js';
 import { getPupils } from './getPupils.js';
 
-export default { 
+export default {
   createPupil,
   deletePupil,
   updatePupil,
-  getPupils
-}
+  getPupils,
+};

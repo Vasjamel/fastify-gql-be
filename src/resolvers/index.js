@@ -6,12 +6,11 @@ const { createLesson, deleteLesson, updateLesson, getLessons } = lessons;
 const { createPupil, deletePupil, updatePupil, getPupils } = pupils;
 const { createTeacher, deleteTeacher, updateTeacher, getTeachers } = teachers;
 
-
 const resolvers = {
   Query: {
     pupils: getPupils,
     lessons: getLessons,
-    teachers: getTeachers
+    teachers: getTeachers,
   },
   Mutation: {
     createTeacher,
@@ -22,8 +21,7 @@ const resolvers = {
     deleteTeacher,
     updateLesson,
     updateTeacher,
-    updatePupil
-
+    updatePupil,
   },
 };
 

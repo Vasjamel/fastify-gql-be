@@ -22,7 +22,7 @@ app.register(mercurius, {
 app.post('/signup', createUser);
 app.post('/login', loginUser);
 
-app.addHook('onRequest', checkAuth)
+app.addHook('onRequest', checkAuth);
 
 app.post('/', async function (req, reply) {
   const query = req.body.query;
