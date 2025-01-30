@@ -1,7 +1,7 @@
 import Fastify from 'fastify';
 import mercurius from 'mercurius';
 import prisma from './prisma/index.js';
-
+import cors from '@fastify/cors'
 import 'dotenv/config';
 
 import schema from './schema/index.js';
@@ -12,7 +12,7 @@ import { loginUser } from './auth/loginUser.js';
 import { checkAuth } from './auth/checkAuth.js';
 
 const app = Fastify();
-
+await app.register(cors, { origin: 'http://localhost:5173' })
 app.register(mercurius, {
   schema,
   resolvers,
