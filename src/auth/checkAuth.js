@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 export async function checkAuth(req, reply) {
+  if (req.routerPath === '/login' && req.routerPath === '/signup') return;
+
   try {
     if (req.url === '/login' || req.url === '/signup') {
       return;
