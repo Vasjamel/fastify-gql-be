@@ -1,9 +1,13 @@
+import ROLES from '../../enums/roles.enum.js';
 import { TEACHERS_INCLUDE } from '../utils/includes.js';
 
 export async function createTeacher(_parent, { data }, ctx) {
+  const { user, prisma } = ctx;
+  if (user.role !== ROLES.ADMIN && user.role !== ROLES.SUPER_ADMIN) return;
+  
   try {
     const { name } = data;
-    const existingTeacher = await ctx.prisma.teacher.findFirst({
+    const existingTeacher = await prisma.teacher.findFirst({
       where: {
         name,
       },
@@ -12,7 +16,7 @@ export async function createTeacher(_parent, { data }, ctx) {
       return Error(`Teacher ${name} already exists.`);
     }
 
-    const teacher = await ctx.prisma.teacher.create({
+    const teacher = await prisma.teacher.create({
       data,
       include: TEACHERS_INCLUDE,
     });

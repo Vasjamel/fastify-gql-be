@@ -1,12 +1,8 @@
 import jwt from 'jsonwebtoken';
 export async function checkAuth(req, reply) {
-  if (req.routerPath === '/login' && req.routerPath === '/signup') return;
+  if (req.raw.url === '/login' || req.raw.url === '/signup' || req.raw.url === '/verify-token') return;
 
   try {
-    if (req.url === '/login' || req.url === '/signup') {
-      return;
-    }
-
     const authHeader = req.headers.authorization;
     if (!authHeader) {
       return reply.status(401).send({ error: 'Unauthorized' });
