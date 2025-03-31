@@ -1,7 +1,7 @@
 export const query = `
     type Query {
-    lessons: [Lesson],
-    pupils: [Pupil],
-    teachers: [Teacher],
+    lessons(find: LessonFind): [Lesson],
+    pupils(find: PupilFind): [Pupil],
+    teachers(find: TeacherFind): [Teacher],
   }
 `
