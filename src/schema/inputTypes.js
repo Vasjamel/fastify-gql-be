@@ -48,5 +48,12 @@ export const inputTypes = `
     id: String,
     name: String
   }
+
+  input UserFind {
+    id: String,
+    email: String,
+    name: String,
+    role: Role
+  }
   
 `
