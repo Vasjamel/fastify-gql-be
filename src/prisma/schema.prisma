@@ -29,9 +29,7 @@ model User {
   password  String
   role      Role     @default(GUEST)
   teacher   Teacher? 
-  teacherId String?  
-  pupil     Pupil?   
-  pupilId   String?  
+  pupil     Pupil?
 }
 
 model Pupil {
@@ -43,8 +41,8 @@ model Pupil {
   group               String?
   lessons             Lesson[]              @relation("PupilLessons")
   Task                Task[]
-  user                User?                  @relation(fields: [userId], references: [id])
-  userId              String?                @unique
+  user                User?                 @relation(fields: [userId], references: [id])
+  userId              String?               @unique
 }
 
 model Lesson {
