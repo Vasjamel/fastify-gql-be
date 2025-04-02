@@ -1,9 +1,9 @@
-import ROLES from '../../enums/roles.enum.js';
-import { PUPILS_INCLUDE } from '../utils/includes.js';
+const ROLES = require('../../enums/roles.enum.js');
+const { PUPILS_INCLUDE } = require('../utils/includes.js');
 
-export async function createPupil(_parent, { data }, ctx) {
+module.exports = async function createPupil(_parent, { data }, ctx) {
   const { user, prisma } = ctx;
-  if (user.role === ROLES.STUDENT || user.role === ROLES.GUEST) return; 
+  if (user.role === ROLES.STUDENT || user.role === ROLES.GUEST) return;
   try {
     const { name, birthday } = data;
 

@@ -1,6 +1,6 @@
-import { query } from './queryType.js';
-import { mutation } from './mutationType.js';
-import { inputTypes } from './inputTypes.js';
+const { query } = require('./queryType.js');
+const { mutation } = require('./mutationType.js');
+const { inputTypes } = require('./inputTypes.js');
 
 const schema = `
   
@@ -54,4 +54,4 @@ const schema = `
   }
 `;
 
-export default schema;
+module.exports = schema;

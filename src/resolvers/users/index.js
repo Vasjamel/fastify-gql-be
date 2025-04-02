@@ -1,5 +1,5 @@
-import { getUsers } from './getUsers.js'
+const getUsers = require('./getUsers.js');
 
-export default { 
-  getUsers 
-}
+module.exports = {
+  getUsers,
+};

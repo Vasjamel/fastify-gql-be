@@ -1,7 +1,6 @@
-import ROLES from '../../enums/roles.enum.js';
-import { TEACHERS_INCLUDE } from '../utils/includes.js';
-
-export async function deleteTeacher(_parent, { find }, ctx) {
+const ROLES = require('../../enums/roles.enum.js');
+const { TEACHERS_INCLUDE } = require('../utils/includes.js');
+module.exports = async function deleteTeacher(_parent, { find }, ctx) {
   const { user, prisma } = ctx;
   if (user.role === ROLES.STUDENT || user.role === ROLES.TEACHER) return;
   

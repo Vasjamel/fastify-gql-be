@@ -1,6 +1,6 @@
-import { LESSONS_INCLUDE } from '../utils/includes.js';
+const { LESSONS_INCLUDE } = require('../utils/includes.js');
 
-export async function deleteLesson(_parent, { find }, ctx) {
+module.exports = async function deleteLesson(_parent, { find }, ctx) {
   try {
     const deletedLesson = await ctx.prisma.lesson.delete({
       where: find,

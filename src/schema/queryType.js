@@ -1,4 +1,4 @@
-export const query = `
+const query = `
   type Query {
     lessons(find: LessonFind): [Lesson],
     pupils(find: PupilFind): [Pupil],
@@ -6,3 +6,5 @@ export const query = `
     users(find: UserFind): [User]
   }
 `
+
+module.exports = { query }

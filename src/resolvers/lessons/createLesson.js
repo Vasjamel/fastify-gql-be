@@ -1,6 +1,6 @@
-import { LESSONS_INCLUDE } from '../utils/includes.js';
+const { LESSONS_INCLUDE } = require('../utils/includes.js');
 
-export async function createLesson(_parent, { data }, ctx) {
+module.exports = async function createLesson(_parent, { data }, ctx) {
   try {
     const { subject } = data;
 

@@ -1,9 +1,9 @@
-import { createLesson } from './createLesson.js';
-import { updateLesson } from './updateLesson.js';
-import { deleteLesson } from './deleteLesson.js';
-import { getLessons } from './getLessons.js';
+const createLesson = require('./createLesson.js');
+const updateLesson = require('./updateLesson.js');
+const deleteLesson = require('./deleteLesson.js');
+const getLessons = require('./getLessons.js');
 
-export default {
+module.exports = {
   createLesson,
   deleteLesson,
   updateLesson,

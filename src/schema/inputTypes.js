@@ -1,5 +1,4 @@
-export const inputTypes = `
-
+const inputTypes = `
   input TeacherInput {
     name: String,
     lessons: LessonsConnection
@@ -56,4 +55,5 @@ export const inputTypes = `
     role: Role
   }
   
-`
+`;
+module.exports = { inputTypes };
