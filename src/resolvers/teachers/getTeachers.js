@@ -1,7 +1,7 @@
-import ROLES from '../../enums/roles.enum.js';
-import { TEACHERS_INCLUDE } from '../utils/includes.js';
+const ROLES = require('../../enums/roles.enum.js');
+const { TEACHERS_INCLUDE } = require('../utils/includes.js');
 
-export async function getTeachers(_parent, { find }, ctx) {
+module.exports = async function getTeachers(_parent, { find }, ctx) {
   const { user, prisma } = ctx;
 
   if (user.role === ROLES.STUDENT) return;
@@ -9,7 +9,7 @@ export async function getTeachers(_parent, { find }, ctx) {
   const where = {
     ...(user.role === ROLES.TEACHER && { id: user.id }),
     ...find,
-  }
+  };
 
   return prisma.teacher.findMany({ where, include: TEACHERS_INCLUDE });
-}
+};

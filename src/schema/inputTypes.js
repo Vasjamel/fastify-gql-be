@@ -1,5 +1,4 @@
-export const inputTypes = `
-
+const inputTypes = `
   input TeacherInput {
     name: String,
     lessons: LessonsConnection
@@ -48,5 +47,13 @@ export const inputTypes = `
     id: String,
     name: String
   }
+
+  input UserFind {
+    id: String,
+    email: String,
+    name: String,
+    role: Role
+  }
   
-`
+`;
+module.exports = { inputTypes };

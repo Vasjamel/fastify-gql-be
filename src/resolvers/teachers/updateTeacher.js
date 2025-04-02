@@ -1,11 +1,11 @@
-import ROLES from '../../enums/roles.enum.js';
-import { TEACHERS_INCLUDE } from '../utils/includes.js';
+const ROLES = require('../../enums/roles.enum.js');
+const { TEACHERS_INCLUDE } = require('../utils/includes.js');
 
-export async function updateTeacher(_parent, { find, data }, ctx) {
+module.exports = async function updateTeacher(_parent, { find, data }, ctx) {
   const { user, prisma } = ctx;
   if (user.role === ROLES.STUDENT) return;
-  if (user.role === ROLES.TEACHER && user.id !== find.id) return
-  
+  if (user.role === ROLES.TEACHER && user.id !== find.id) return;
+
   try {
     const updatedTeacher = await prisma.teacher.update({
       where: find,
@@ -17,4 +17,4 @@ export async function updateTeacher(_parent, { find, data }, ctx) {
   } catch (error) {
     return error;
   }
-}
+};

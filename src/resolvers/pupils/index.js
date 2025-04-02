@@ -1,9 +1,9 @@
-import { createPupil } from './createPupil.js';
-import { updatePupil } from './updatePupil.js';
-import { deletePupil } from './deletePupil.js';
-import { getPupils } from './getPupils.js';
+const createPupil = require('./createPupil.js');
+const updatePupil = require('./updatePupil.js');
+const deletePupil = require('./deletePupil.js');
+const getPupils = require('./getPupils.js');
 
-export default {
+module.exports = {
   createPupil,
   deletePupil,
   updatePupil,

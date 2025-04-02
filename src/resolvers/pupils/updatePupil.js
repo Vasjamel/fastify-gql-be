@@ -1,6 +1,6 @@
-import { PUPILS_INCLUDE } from '../utils/includes.js';
+const { PUPILS_INCLUDE } = require('../utils/includes.js');
 
-export async function updatePupil(_parent, { find, data }, ctx) {
+module.exports = async function updatePupil(_parent, { find, data }, ctx) {
   try {
     const updatedPupil = await ctx.prisma.pupil.update({
       where: find,

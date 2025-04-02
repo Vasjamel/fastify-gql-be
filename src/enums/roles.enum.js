@@ -3,7 +3,7 @@ const ROLES = Object.freeze({
   TEACHER: 'TEACHER',
   STUDENT: 'STUDENT',
   GUEST: 'GUEST',
-  SUPER_ADMIN: "SUPER_ADMIN"
+  SUPER_ADMIN: 'SUPER_ADMIN',
 });
 
-export default ROLES
+module.exports = ROLES;

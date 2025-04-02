@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
-import prisma from '../prisma/index.js';
+const bcrypt = require('bcrypt');
+const prisma = require('../../prisma/index.js');
 
 const SALT_ROUNDS = 10;
 
-export async function createUser(req, reply) {
+module.exports = async function createUser(req, reply) {
   try {
     const { password, email, name } = JSON.parse(req.body);
 
@@ -28,4 +28,4 @@ export async function createUser(req, reply) {
   } catch (error) {
     return error;
   }
-}
+};

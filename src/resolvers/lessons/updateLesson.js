@@ -1,6 +1,6 @@
-import { LESSONS_INCLUDE } from '../utils/includes.js';
+const { LESSONS_INCLUDE } = require('../utils/includes.js');
 
-export async function updateLesson(_parent, { find, data }, ctx) {
+module.exports = async function updateLesson(_parent, { find, data }, ctx) {
   try {
     const updatedLesson = await ctx.prisma.lesson.update({
       where: find,

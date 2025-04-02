@@ -1,7 +1,7 @@
-import prisma from '../prisma/index.js';
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken')
+const prisma = require('../../prisma/index.js')
 
-export async function verifyToken(req, reply) {
+module.exports = async function verifyToken(req, reply) {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {

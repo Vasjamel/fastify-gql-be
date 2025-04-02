@@ -1,4 +1,4 @@
-export const mutation = `
+const mutation = `
   type Mutation {
 
     createTeacher(data: TeacherInput!): Teacher,
@@ -20,4 +20,6 @@ export const mutation = `
     updateTeacher(find: TeacherFind!, data: TeacherInput!): Teacher
 
   }
-`
+`;
+
+module.exports = { mutation };

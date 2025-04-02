@@ -1,5 +1,6 @@
-import jwt from 'jsonwebtoken';
-export async function checkAuth(req, reply) {
+const jwt = require('jsonwebtoken')
+
+module.exports = async function checkAuth(req, reply) {
   if (req.raw.url === '/login' || req.raw.url === '/signup' || req.raw.url === '/verify-token') return;
 
   try {

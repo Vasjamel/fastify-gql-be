@@ -1,8 +1,9 @@
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import prisma from '../prisma/index.js';
+const jwt = require('jsonwebtoken')
+const prisma = require('../../prisma/index.js')
+const bcrypt = require('bcrypt')
 
-export async function loginUser(req, reply) {
+
+module.exports = async function loginUser(req, reply) {
   const { email, password } = JSON.parse(req.body);
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
