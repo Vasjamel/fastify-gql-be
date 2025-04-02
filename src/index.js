@@ -1,6 +1,6 @@
 const Fastify = require('fastify');
 const mercurius = require('mercurius');
-const prisma = require('./prisma/index.js');
+const prisma = require("../prisma/index.js")
 const cors = require('@fastify/cors');
 require('dotenv/config');
 

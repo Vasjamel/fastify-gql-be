@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const prisma = require('../prisma/index.js')
+const prisma = require('../../prisma/index.js')
 const bcrypt = require('bcrypt')
 
 
