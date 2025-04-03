@@ -54,6 +54,13 @@ const inputTypes = `
     name: String,
     role: Role
   }
+
+  input LessonContentInput {
+    id: String
+    type: LessonContentType
+    order: Int
+    value: String
+  }
   
 `;
 module.exports = { inputTypes };

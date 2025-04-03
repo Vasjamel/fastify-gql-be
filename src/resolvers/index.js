@@ -2,6 +2,7 @@ const lessons = require('./lessons/index.js');
 const pupils = require('./pupils/index.js');
 const teachers = require('./teachers/index.js');
 const users = require('./users/index.js');
+const createLessonContent = require('./lessonContent/createLessonContent.js')
 
 const { createLesson, deleteLesson, updateLesson, getLessons } = lessons;
 const { createPupil, deletePupil, updatePupil, getPupils } = pupils;
@@ -25,6 +26,7 @@ const resolvers = {
     updateLesson,
     updateTeacher,
     updatePupil,
+    createLessonContent
   },
 };
 
