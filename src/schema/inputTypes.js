@@ -60,6 +60,7 @@ const inputTypes = `
     type: LessonContentType
     order: Int
     value: String
+    lessonId: String
   }
   
 `;
