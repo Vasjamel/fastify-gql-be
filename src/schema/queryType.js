@@ -1,9 +1,9 @@
 const query = `
   type Query {
-    lessons(find: LessonFind): [Lesson],
-    pupils(find: PupilFind): [Pupil],
-    teachers(find: TeacherFind): [Teacher],
-    users(find: UserFind): [User]
+    lessons(find: LessonFind, options: OptionsInput): [Lesson],
+    pupils(find: PupilFind, options: OptionsInput): [Pupil],
+    teachers(find: TeacherFind, options: OptionsInput): [Teacher],
+    users(find: UserFind, options: OptionsInput): [User]
   }
 `
 

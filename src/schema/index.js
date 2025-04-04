@@ -3,6 +3,11 @@ const { mutation } = require('./mutationType.js');
 const { inputTypes } = require('./inputTypes.js');
 
 const schema = `
+  ${query}
+
+  ${mutation}
+
+  ${inputTypes}
   scalar Date
 
   enum Role {
@@ -13,6 +18,11 @@ const schema = `
     SUPER_ADMIN
   }
 
+  enum SortOrder {
+    ASC
+    DESC
+  }
+
   enum LessonContentType {
     TEXT
     VIDEO
@@ -21,11 +31,6 @@ const schema = `
     PDF
     LINK
   }
-  ${query}
-
-  ${mutation}
-
-  ${inputTypes}
   
 
   type Lesson {

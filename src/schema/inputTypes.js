@@ -66,5 +66,19 @@ const inputTypes = `
     lessonId: String
   }
   
+  input PaginationInput {
+    skip: Int
+    take: Int
+  }
+
+  input SortingInput {
+    field: String!
+    order: SortOrder!
+  }
+
+  input OptionsInput {
+    sort: SortingInput
+    pagination: PaginationInput
+  }
 `;
 module.exports = { inputTypes };
