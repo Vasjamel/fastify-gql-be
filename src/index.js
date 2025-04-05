@@ -1,6 +1,6 @@
 const Fastify = require('fastify');
 const mercurius = require('mercurius');
-const prisma = require("../prisma/index.js")
+const prisma = require('../prisma/index.js');
 const cors = require('@fastify/cors');
 require('dotenv/config');
 
@@ -24,6 +24,20 @@ async function startServer() {
     schema,
     resolvers,
     graphiql: true,
+
+    errorFormatter: (error, ctx) => {
+      console.error('GraphQL Error:', error);
+      return {
+        statusCode: 200,
+        response: {
+          errors: error.errors.map((err) => ({
+            message: err.message,
+            code: err.extensions?.code || 'INTERNAL_SERVER_ERROR',
+            path: err.path,
+          })),
+        },
+      };
+    },
   });
 
   app.addHook('onRequest', checkAuth);
@@ -39,4 +53,4 @@ async function startServer() {
 
 startServer();
 
-module.exports = startServer
+module.exports = startServer;

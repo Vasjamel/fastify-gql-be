@@ -25,6 +25,6 @@ module.exports = async function createPupil(_parent, { data }, ctx) {
     });
     return pupil;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

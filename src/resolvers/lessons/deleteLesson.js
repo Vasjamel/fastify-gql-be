@@ -9,6 +9,6 @@ module.exports = async function deleteLesson(_parent, { find }, ctx) {
 
     return deletedLesson;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

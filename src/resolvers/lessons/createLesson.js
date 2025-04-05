@@ -30,6 +30,6 @@ module.exports = async function createLesson(_parent, { data }, ctx) {
 
     return lesson;
   } catch (error) {
-    return error;
+    throw error
   }
 };

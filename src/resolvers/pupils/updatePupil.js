@@ -10,6 +10,6 @@ module.exports = async function updatePupil(_parent, { find, data }, ctx) {
 
     return updatedPupil;
   } catch (error) {
-    return error;
+    throw error;
   }
 }
