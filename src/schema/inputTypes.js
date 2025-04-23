@@ -59,6 +59,13 @@ const inputTypes = `
     role: Role
   }
 
+  input LessonContentFind {
+    type: LessonContentType
+    order: Int
+    value: String
+    lessonId: String
+  }
+
   input LessonContentInput {
     type: LessonContentType
     order: Int

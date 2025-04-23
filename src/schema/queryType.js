@@ -4,6 +4,7 @@ const query = `
     pupils(find: PupilFind, options: OptionsInput): [Pupil],
     teachers(find: TeacherFind, options: OptionsInput): [Teacher],
     users(find: UserFind, options: OptionsInput): [User]
+    lessonContents(find: LessonContentFind, options: OptionsInput): [LessonContent],
   }
 `
 

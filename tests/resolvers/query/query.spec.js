@@ -1,6 +1,6 @@
 const resolvers = require('../../../src/resolvers/index.js');
 
-const QUERY_FIELDS = ['pupils', 'lessons', 'teachers', 'users'];
+const QUERY_FIELDS = ['pupils', 'lessons', 'teachers', 'users', 'lessonContents'];
 
 describe('Query', () => {
   test('should contain the correct fields', () => {
