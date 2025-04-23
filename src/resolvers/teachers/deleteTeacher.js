@@ -12,6 +12,6 @@ module.exports = async function deleteTeacher(_parent, { find }, ctx) {
 
     return deletedTeacher;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

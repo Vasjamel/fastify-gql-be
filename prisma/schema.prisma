@@ -49,11 +49,35 @@ model Lesson {
   id                  String                @id @default(cuid())
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
+  title               String?                
+  objective           String?
+  category            String?
   subject             String                @unique
+  content             LessonContent[]     
   teacher             Teacher?              @relation(fields: [teacherId], references: [id])
   teacherId           String?
   pupils              Pupil[]               @relation("PupilLessons")
   Task                Task[]
+}
+
+model LessonContent {
+  id                  String                @id @default(cuid())
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  type                LessonContentType     @default(TEXT)
+  order               Int?
+  value               String?           
+  lesson              Lesson                @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  lessonId            String
+}
+
+enum LessonContentType {
+  TEXT
+  VIDEO
+  AUDIO
+  IMAGE
+  PDF
+  LINK
 }
 
 model Teacher {

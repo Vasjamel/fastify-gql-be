@@ -9,6 +9,6 @@ module.exports = async function deletePupil(_parent, { find }, ctx) {
 
     return deletedPupil;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

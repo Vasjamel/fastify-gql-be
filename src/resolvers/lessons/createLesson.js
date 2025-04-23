@@ -1,6 +1,6 @@
 const { LESSONS_INCLUDE } = require('../utils/includes.js');
 
-module.exports = async function createLesson(_parent, { data }, ctx) {
+module.exports = async function createLesson(_parent, { data }, ctx) { 
   try {
     const { subject } = data;
 
@@ -14,26 +14,22 @@ module.exports = async function createLesson(_parent, { data }, ctx) {
       return Error(`A lesson "${subject}" already exists`);
     }
 
-    const newTeacher = Object.entries(data).reduce((teacher, [key, value]) => {
-      // add teacherId field for one-to-many connection
+    const newLesson = Object.entries(data).reduce((lesson, [key, value]) => {
       if (key === 'teacher') {
-        teacher.teacherId = value.connect[0].id;
-        return teacher;
+        lesson.teacherId = value.connect[0].id;
+        return lesson;
       }
-      teacher[key] = value;
-      return teacher;
+      lesson[key] = value;
+      return lesson;
     }, {});
 
-    if (data.teacher) {
-      data.teacherId = data.teacher.connect.id;
-    }
-
     const lesson = await ctx.prisma.lesson.create({
-      data: newTeacher,
+      data: { ...newLesson, content: { create: newLesson.content } },
       include: LESSONS_INCLUDE,
     });
+
     return lesson;
   } catch (error) {
-    return error;
+    throw error
   }
-}
+};

@@ -15,6 +15,6 @@ module.exports = async function updateTeacher(_parent, { find, data }, ctx) {
 
     return updatedTeacher;
   } catch (error) {
-    return error;
+    throw error;
   }
 };

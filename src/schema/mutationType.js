@@ -7,6 +7,8 @@ const mutation = `
 
     createPupil(data: PupilInput!): Pupil
 
+    createLessonContent(data: LessonContentInput!): LessonContent
+
     deletePupil(find: PupilFind!): Pupil,
 
     deleteTeacher(find: TeacherFind!): Teacher,

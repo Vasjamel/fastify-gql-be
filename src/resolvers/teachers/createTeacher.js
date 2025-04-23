@@ -22,6 +22,6 @@ module.exports = async function createTeacher(_parent, { data }, ctx) {
     });
     return teacher;
   } catch (error) {
-    return error;
+    throw error;
   }
 }

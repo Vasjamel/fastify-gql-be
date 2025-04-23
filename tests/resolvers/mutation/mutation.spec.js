@@ -11,6 +11,7 @@ describe('Mutations', () => {
     'updateLesson',
     'updateTeacher',
     'updatePupil',
+    'createLessonContent'
   ];
 
   test('should contain the correct fields', () => {
@@ -24,5 +25,4 @@ describe('Mutations', () => {
       expect(typeof resolvers.Mutation[field]).toBe('function');
     });
   });
-  
 });
